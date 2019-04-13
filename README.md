@@ -3,7 +3,7 @@
 
 This repo implements the visual positioning & controlling functionalities for the drone delivery platform.
 
-In essence, the program detects the aruco tag captured by the PiCam, calculates the relative position between it and the drone, and use mavlink protocol to navigate PixHawk-based drone to land on the tag safely.
+In brief, the program detects the aruco tag captured by the PiCam, calculates the relative position between it and the drone, and use mavlink protocol to navigate PixHawk-based drone to land on the tag safely.
 
 ## TODO List
 
@@ -12,7 +12,7 @@ In essence, the program detects the aruco tag captured by the PiCam, calculates 
 - [ ] Positioning of Aruco tags in 3D space
 - [ ] Communication through mavlink protocol
 - [ ] PID remote drone controlling
-- [ ] Extra demands & functionalities emerge during during development
+- [ ] Extra demands & functionalities emerge during development
 
 ## Getting started
 
@@ -25,14 +25,13 @@ Prerequisities:
     * Dronekit
     * Mavlink
 
-To install them:
+To install them on a raspberry pi:
 ```bash
 sudo apt install python3
 pip3 install opencv-contrib-python
 pip3 install dronekit
 ```
 
-You'll have to `pip3 uninstall opencv-python` first if you already have the opencv python binding installed without contribution libraries, otherwise the two modules will conflict.
+Installing on windows follows similiar procedures. You'll have to `pip3 uninstall opencv-python` first if you already have the opencv python binding installed without contribution libraries, otherwise the two modules will conflict.
 
 After cloning the repository, run `aruco_detect.py` to begin tag detection.
-
