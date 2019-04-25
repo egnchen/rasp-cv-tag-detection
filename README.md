@@ -11,7 +11,7 @@ In brief, the program detects the aruco tag captured by the PiCam, calculates th
 - [x] Detection of Aruco tags
 - [ ] Positioning of Aruco tags in 3D space
 	- [x] Pose estimation
-	- [ ] Distance estimation
+	- [x] Distance estimation(only linear distance now)
 - [ ] Communication through mavlink protocol
 - [ ] PID remote drone controlling
 - [ ] Extra demands & functionalities emerge during development
