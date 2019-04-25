@@ -26,7 +26,7 @@ Prerequisities:
     * Mavlink
 
 To install them on a raspberry pi:
-```bash
+``` bash
 sudo apt install python3
 pip3 install opencv-contrib-python
 pip3 install dronekit
