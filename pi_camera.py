@@ -3,6 +3,7 @@
 from imutils.video import FPS
 from picamera.array import PiRGBArray
 from picamera import PiCamera
+import params
 import argparse
 import imutils
 import time
@@ -31,10 +32,13 @@ for i, f in enumerate(stream):
     corners, ids, rejecttedImgPoints = aruco.detectMarkers(frame, aruco_dict)
     frame = aruco.drawDetectedMarkers(frame, corners, ids)
     
+    if ids is not None:    
+        rvecs, tvecs, _objPoints = aruco.estimatePoseSingleMarkers(corners, 0.125, params.mtx, params.dist)
+        for rvec, tvec in zip(rvecs, tvecs):
+            frame = aruco.drawAxis(frame, params.mtx, params.dist, rvec, tvec, 0.125) 
+    
     cv2.imshow("Frame", frame)
-    key = cv2.waitKey(1) & 0xFF
-    if chr(key) == 'q':
-        break
+    key = cv2.waitKey(1)
     
     rawCapture.truncate(0)
     fps.update()

@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from . import params
 import cv2.aruco as aruco
 
 if __name__ == "__main__":
