@@ -8,7 +8,7 @@ In brief, the program detects the aruco tag captured by the PiCam, calculates th
 ## TODO List
 
 - [ ] Generation of Aruco tags
-- [x] Detection of Aruco tags
+- [√] Detection of Aruco tags
 - [ ] Positioning of Aruco tags in 3D space
 - [ ] Communication through mavlink protocol
 - [ ] PID remote drone controlling
@@ -26,7 +26,7 @@ Prerequisities:
     * Mavlink
 
 To install them on a raspberry pi:
-```
+``` bash
 sudo apt install python3
 pip3 install opencv-contrib-python
 pip3 install dronekit
