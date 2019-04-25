@@ -22,7 +22,8 @@ objp[:,:2] = np.mgrid[0:cb_size[0], 0:cb_size[1]].T.reshape(-1,2)
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
-images = glob.glob('cali/*.jpg')
+images = glob.glob('imgs/cali*.jpg')
+print(images)
 
 # sampling
 for fname in images:
@@ -42,7 +43,7 @@ for fname in images:
         # Draw and display the corners
         cv2.drawChessboardCorners(img, cb_size, corners, ret)
         cv2.imshow('img',img)
-        cv2.waitkey(300)
+        cv2.waitKey(300)
 
 cv2.destroyAllWindows()
 
