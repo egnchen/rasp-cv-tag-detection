@@ -9,6 +9,17 @@ import imutils
 import time
 import cv2
 import cv2.aruco as aruco
+
+# timing helper functions
+def tick():
+    global _t
+    _t = time.time()
+
+def tock(prompt):
+    global _t
+    print("{} {:.2f}ms".format(prompt, (time.time() - _t) * 1000))
+    _t = time.time()
+
 print("Module initialization completed.")
 
 # initialize the camera and stream
@@ -26,7 +37,12 @@ print("Sampling started.")
 
 aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
 
+
+# start ticking
+tick()
+
 for i, f in enumerate(stream):
+    tock("capture time")
     frame = f.array
     # frame = imutils.resize(frame, width=400)
 
@@ -41,10 +57,12 @@ for i, f in enumerate(stream):
             prompt_strings.append("x:{:.2f} y:{:.2f} z:{:.2f}".format(*(tvec[0])))
         cv2.putText(frame, '\n'.join(prompt_strings), (25,25), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1)
     
-    cv2.imshow("Frame", frame)
-    key = cv2.waitKey(1) & 0xFF
-    if key == ord('q'):
-        break
+    tock("process time")
+
+    # cv2.imshow("Frame", frame)
+    # key = cv2.waitKey(1) & 0xFF
+    # if key == ord('q'):
+    #     break
     
     rawCapture.truncate(0)
     fps.update()
