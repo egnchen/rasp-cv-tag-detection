@@ -37,3 +37,7 @@ pip3 install dronekit
 Installing on windows follows similiar procedures. You'll have to `pip3 uninstall opencv-python` first if you already have the opencv python binding installed without contribution libraries, otherwise the two modules will conflict.
 
 After cloning the repository, run `aruco_detect.py` to begin tag detection.
+
+### Tag detection
+
+Run `aruco_detect.py` in a Python 3 interpreter to run the detection program. It uses `cv2.VideoCapture()`, so it should work fine on both laptop camerars and usb camera on a Raspberry Pi.
