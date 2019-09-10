@@ -1,6 +1,6 @@
 from dronekit import connect
 
-vehicle = connect('/dev/ttyS0',baud = 921600,wait_ready = True)
+vehicle = connect('/dev/ttyACM0',baud = 921600,wait_ready = True)
 
 print("Autopilot Firmware version: %s" % vehicle.version)
 print("Global Location: %s" % vehicle.location.global_frame)
@@ -19,10 +19,6 @@ print("Heading: %s" % vehicle.heading)
 print("Is Armable?: %s" % vehicle.is_armable)
 print("System status: %s" % vehicle.system_status.state)
 
-
-
 print("Mode: %s" % vehicle.mode.name)
-
-
 
 print("Armed: %s" % vehicle.armed)

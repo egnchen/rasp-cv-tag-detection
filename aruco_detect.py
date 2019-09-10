@@ -33,10 +33,12 @@ if __name__ == "__main__":
             rvecs, tvecs, _objPoints = aruco.estimatePoseSingleMarkers(corners, 0.15, params.mtx, params.dist)
             prompt_strings = []
             for rvec, tvec in zip(rvecs, tvecs):
+                print("rvec ", rvec)
+                print("tvec ", tvec)
                 frame = aruco.drawAxis(frame, params.mtx, params.dist, rvec, tvec, 0.15)
-                prompt_strings.append("x:{:.2f} y:{:.2f} z:{:.2f} {:.2f}".format(*(tvec[0]), dist(*tvec[0])))
+                prompt_strings.append("x:{:.2f} y:{:.2f} z:{:.2f}".format(*(tvec[0])))
+                # prompt_strings.append("x:{:.2f} y:{:.2f} z:{:.2f}".format(*(rvec[0])))
             cv2.putText(frame, '\n'.join(prompt_strings), (25,25), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1)
-    
         # Display the resulting frame
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):

@@ -1,87 +1,37 @@
 #!/usr/bin/env python
 
 # -*- coding: utf-8 -*-
-
-
-
-
-import time
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 
 from pymavlink import mavutil
 
-
-
-
-vehicle = connect('/dev/ttyS0',baud = 921600,wait_ready = True)
-
-
+vehicle = connect('/dev/ttyACM0', baud = 921600, wait_ready = True)
 
 def arm_and_takeoff(aTargetAltitude):
     
-	    
 	print("Basic pre-arm checks")
-    
-	
-	while not vehicle.is_armable:
-        
+	'''while not vehicle.is_armable:
 		print(" Waiting for vehicle to initialise...")
-        
 		time.sleep(1)
-
-    
-
-	
-	print("Arming motors")
-    
-	
-
-	vehicle.mode = VehicleMode("GUIDED")
-  
-	    
+	print("Arming motors")'''
+	vehicle.mode = VehicleMode("GUIDED")    
 	vehicle.armed = True
-
-    
-
 	   
-	while not vehicle.armed:
-        
+	'''while not vehicle.armed:
 		print(" Waiting for arming...")
-        
-		time.sleep(1)
+		time.sleep(1)'''
 
-    
-
-	
-    
 	print("Taking off!")
-    
-	
-    
 	vehicle.simple_takeoff(aTargetAltitude)
-
-    
-
-	
-    
 	while True:
-        
 		print(" Altitude: ", vehicle.location.global_relative_frame.alt)
-  
-		
-
 		if vehicle.location.global_relative_frame.alt >= aTargetAltitude * 0.95:
- 
 			print("Reached target altitude")
-
 			break
-
 			time.sleep(1)
 
 
 '''def send_nav_velocity(self,v_x,v_y,v_z):
-	
-
 	msg =self.vehicle.message_factory.set_position_target_local_ned_encode(
 		0,
 		0,
@@ -98,10 +48,10 @@ def arm_and_takeoff(aTargetAltitude):
 '''
 
 
-arm_and_takeoff(2)
+arm_and_takeoff(0.3)
 time.sleep(10)
 
-
+vehicle.armed = false
 '''print("Set default/target airspeed to 3")
 
 
@@ -150,10 +100,6 @@ time.sleep(15)
 
 #vehicle.mode = VehicleMode("RTL")
 '''
-
-
-vehicle.armed = False
-
 
 print("Close vehicle object")
 

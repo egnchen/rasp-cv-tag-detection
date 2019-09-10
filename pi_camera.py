@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-# import the necessary packages
+
+# pi_camera.py
+# Take use of piCamera and opencv aruco library to detect aruco markers.
+# @Author eyek(cyj205@sjtu.edu.cn)
 from imutils.video import FPS
 from picamera.array import PiRGBArray
 from picamera import PiCamera
