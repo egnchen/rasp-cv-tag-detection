@@ -41,6 +41,9 @@ class FPS:
     def fps(self):
         return self._numFrames / self.elapsed()
 
+    def wait(self, millis):
+        time.sleep((millis - self._lastElapsed)*0.001)
+
 class USBVideoStream:
     def __init__(self, src=0):
         # initialize the video camera stream and read the first frame

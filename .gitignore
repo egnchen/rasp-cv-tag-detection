@@ -1,2 +1,3 @@
 imgs/
 *.pyc
+__pycache__/

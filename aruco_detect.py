@@ -9,11 +9,6 @@ import math
 import params
 from camera_helper import USBVideoStream, FPS
 
-
-def dist(x,y,z):
-    return math.sqrt(x**2+y**2+z**2)
-
-
 if __name__ == "__main__":
     aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
     fps_counter = FPS()
@@ -43,6 +38,8 @@ if __name__ == "__main__":
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
+        fps_counter.wait(40)
 
     # When everything done, stop the stream
     stream.stop()
